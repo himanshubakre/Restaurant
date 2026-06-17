@@ -390,9 +390,168 @@
           font-size: 0.9rem;
         }
       }
+      /* Floating Cart */
+
+.cart-box{
+
+position: fixed;
+
+right: 20px;
+
+bottom: 100px;
+
+width: 320px;
+
+background: white;
+
+padding: 20px;
+
+border-radius: 25px;
+
+box-shadow: 0 20px 50px rgba(0,0,0,.25);
+
+z-index: 999;
+
+max-height: 450px;
+
+overflow-y: auto;
+
+}
+
+
+.cart-box h3{
+
+margin-bottom: 15px;
+
+}
+
+
+.cart-item{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:15px;
+
+padding-bottom:10px;
+
+border-bottom:1px solid #eee;
+
+}
+
+
+.qty-controls button{
+
+width:25px;
+
+height:25px;
+
+border:none;
+
+border-radius:50%;
+
+background:#FF6B00;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+
+.total{
+
+font-size:20px;
+
+font-weight:700;
+
+margin:15px 0;
+
+}
+
+
+.checkout-btn{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:50px;
+
+background:#25D366;
+
+color:white;
+
+font-size:16px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+
+.empty{
+
+color:#777;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.cart-box{
+
+width:calc(100% - 30px);
+
+left:15px;
+
+right:15px;
+
+bottom:90px;
+
+}
+
+}
     </style>
   </head>
+<div class="cart-box">
 
+<h3>
+🛒 Your Order
+</h3>
+
+<div id="cart-items">
+
+<p class="empty">
+No items added yet
+</p>
+
+</div>
+
+
+<div class="total">
+Total: ₹<span id="total">
+0
+</span>
+</div>
+
+
+<button onclick="checkoutWhatsApp()"
+class="checkout-btn">
+
+📱 Order on WhatsApp
+
+</button>
+
+</div>
   <body>
     <!-- =====================
         NAVBAR
@@ -478,6 +637,192 @@
         </div>
       </div>
     </section>
+    <script>
+
+let cart = [];
+
+
+function addToCart(name, price) {
+
+let item = cart.find(i => i.name === name);
+
+
+if(item){
+
+item.qty++;
+
+}
+
+else{
+
+cart.push({
+name:name,
+price:price,
+qty:1
+});
+
+}
+
+updateCart();
+
+}
+
+
+
+function increase(index){
+
+cart[index].qty++;
+
+updateCart();
+
+}
+
+
+
+function decrease(index){
+
+cart[index].qty--;
+
+
+if(cart[index].qty <= 0){
+
+cart.splice(index,1);
+
+}
+
+
+updateCart();
+
+}
+
+
+
+function updateCart(){
+
+let container =
+document.getElementById("cart-items");
+
+
+let total = 0;
+
+
+if(cart.length === 0){
+
+container.innerHTML =
+"<p class='empty'>No items added yet</p>";
+
+}
+
+else{
+
+container.innerHTML = "";
+
+
+cart.forEach((item,index)=>{
+
+
+total += item.price * item.qty;
+
+
+container.innerHTML += `
+
+<div class="cart-item">
+
+<div>
+
+<strong>${item.name}</strong>
+
+<br>
+
+₹${item.price}
+
+</div>
+
+
+<div class="qty-controls">
+
+<button onclick="decrease(${index})">
+-
+</button>
+
+${item.qty}
+
+<button onclick="increase(${index})">
++
+</button>
+
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+document.getElementById("total")
+.innerText = total;
+
+}
+
+
+
+function checkoutWhatsApp(){
+
+
+if(cart.length === 0){
+
+alert("Please add items to your order!");
+
+return;
+
+}
+
+
+let message =
+"🍔 Patil's Vada Pav Order%0A%0A";
+
+
+let total = 0;
+
+
+cart.forEach(item=>{
+
+message +=
+`• ${item.name} x ${item.qty}
+`;
+
+total += item.price * item.qty;
+
+
+});
+
+
+message += 
+`
+Total: ₹${total}
+
+Name:
+Mobile:
+Pickup / Delivery:
+Address:
+`;
+
+let url =
+"https://wa.me/91XXXXXXXXXX?text=" +
+encodeURIComponent(message);
+
+
+window.open(url,"_blank");
+
+
+}
+
+
+</script>
   </body>
 </html>
 
@@ -514,7 +859,11 @@
           <div class="price-row">
             <span class="price"> ₹25 </span>
 
-            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+            <button 
+class="add-btn"
+onclick="addToCart('Cheese Burst Vada Pav', 50)">
++ Add
+</button>
           </div>
         </div>
       </div>
@@ -535,7 +884,11 @@
           <div class="price-row">
             <span class="price"> ₹55 </span>
 
-            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+            <button 
+class="add-btn"
+onclick="addToCart('Cheese Burst Vada Pav', 50)">
++ Add
+</button>
           </div>
         </div>
       </div>
@@ -556,7 +909,11 @@
           <div class="price-row">
             <span class="price"> ₹60 </span>
 
-            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+            <button 
+class="add-btn"
+onclick="addToCart('Cheese Burst Vada Pav', 50)">
++ Add
+</button>
           </div>
         </div>
       </div>
@@ -577,7 +934,11 @@
           <div class="price-row">
             <span class="price"> ₹80 </span>
 
-            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+            <button 
+class="add-btn"
+onclick="addToCart('Cheese Burst Vada Pav', 50)">
++ Add
+</button>
           </div>
         </div>
       </div>
@@ -598,7 +959,11 @@
           <div class="price-row">
             <span class="price"> ₹70 </span>
 
-            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+            <button 
+class="add-btn"
+onclick="addToCart('Cheese Burst Vada Pav', 50)">
++ Add
+</button>
           </div>
         </div>
       </div>
@@ -622,7 +987,11 @@
           <div class="price-row">
             <span class="price"> ₹40 </span>
 
-            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+            <button 
+class="add-btn"
+onclick="addToCart('Cheese Burst Vada Pav', 50)">
++ Add
+</button>
           </div>
         </div>
       </div>
@@ -691,7 +1060,7 @@
           instantly.
         </p>
 
-        <a href="https://wa.me/91XXXXXXXXXX" class="btn primary">
+        <a href="https://wa.me/919168067631" class="btn primary">
           Order On WhatsApp
         </a>
       </div>
@@ -1377,7 +1746,7 @@
   <br>
   
   
-  <a href="https://wa.me/91XXXXXXXXXX">
+  <a href="https://wa.me/919168067631">
   
   WhatsApp Order
   
@@ -1417,7 +1786,7 @@
   
   
   <a 
-  href="https://wa.me/91XXXXXXXXXX"
+  href="https://wa.me/919168067631"
   class="whatsapp-float">
   
   💬
