@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Patil's Vada Pav | Premium Street Food in Belapur</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =====================
+    ROOT DESIGN SYSTEM
+====================== */
+
+      :root {
+        --bg: #fff8ee;
+        --white: #ffffff;
+        --dark: #181818;
+        --orange: #ff6b00;
+        --orange-dark: #e85d00;
+        --green: #00c896;
+        --gold: #ffc857;
+
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+        --radius: 24px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Typography */
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Outfit", sans-serif;
+        line-height: 1.1;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 800;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 15px;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #555;
+      }
+
+      /* Layout */
+
+      .container {
+        width: min(1150px, 90%);
+        margin: auto;
+      }
+
+      section {
+        padding: 90px 0;
+      }
+
+      /* =====================
+        NAVBAR
+====================== */
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+
+        backdrop-filter: blur(15px);
+
+        background: rgba(255, 248, 238, 0.75);
+
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      nav {
+        height: 80px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+      }
+
+      .logo {
+        font-family: "Outfit";
+
+        font-size: 1.5rem;
+
+        font-weight: 800;
+
+        color: var(--dark);
+      }
+
+      .logo span {
+        color: var(--orange);
+      }
+
+      .nav-btn {
+        text-decoration: none;
+
+        background: linear-gradient(135deg, var(--orange), var(--gold));
+
+        color: white;
+
+        padding: 12px 22px;
+
+        border-radius: 50px;
+
+        font-weight: 600;
+
+        box-shadow: 0 10px 25px rgba(255, 107, 0, 0.35);
+
+        transition: 0.3s;
+      }
+
+      .nav-btn:hover {
+        transform: translateY(-3px);
+      }
+
+      /* =====================
+        HERO
+====================== */
+
+      .hero {
+        padding-top: 60px;
+      }
+
+      .hero-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        align-items: center;
+
+        gap: 50px;
+      }
+
+      .tag {
+        display: inline-block;
+
+        background: rgba(0, 200, 150, 0.15);
+
+        color: var(--green);
+
+        padding: 10px 18px;
+
+        border-radius: 50px;
+
+        font-weight: 600;
+
+        margin-bottom: 25px;
+      }
+
+      .hero h1 {
+        margin-bottom: 25px;
+      }
+
+      .hero p {
+        font-size: 1.15rem;
+
+        max-width: 500px;
+
+        margin-bottom: 35px;
+      }
+
+      .hero-buttons {
+        display: flex;
+
+        gap: 15px;
+
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        padding: 16px 28px;
+
+        border-radius: 50px;
+
+        font-weight: 600;
+
+        text-decoration: none;
+
+        transition: 0.3s;
+      }
+
+      .primary {
+        background: linear-gradient(135deg, var(--orange), var(--gold));
+
+        color: white;
+
+        box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4);
+      }
+
+      .primary:hover {
+        transform: translateY(-5px);
+      }
+
+      .secondary {
+        border: 2px solid #ddd;
+
+        color: var(--dark);
+      }
+
+      .secondary:hover {
+        background: white;
+      }
+
+      /* Hero Image */
+
+      .hero-image {
+        position: relative;
+      }
+
+      .hero-image img {
+        width: 100%;
+
+        border-radius: 35px;
+
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      }
+
+      .food-card {
+        position: absolute;
+
+        bottom: 25px;
+
+        left: -20px;
+
+        background: rgba(255, 255, 255, 0.75);
+
+        backdrop-filter: blur(15px);
+
+        padding: 18px;
+
+        border-radius: 20px;
+
+        box-shadow: var(--shadow);
+      }
+
+      .food-card h3 {
+        font-size: 1rem;
+      }
+
+      .food-card span {
+        color: var(--orange);
+
+        font-weight: 700;
+      }
+
+      /* ======================
+       OFFERS
+======================= */
+
+      .offers {
+        padding-top: 20px;
+      }
+
+      .offer-slider {
+        display: flex;
+
+        gap: 20px;
+
+        overflow-x: auto;
+
+        padding: 15px 5px;
+
+        scrollbar-width: none;
+      }
+
+      .offer-slider::-webkit-scrollbar {
+        display: none;
+      }
+
+      .offer {
+        min-width: 280px;
+
+        padding: 25px;
+
+        border-radius: 25px;
+
+        color: white;
+
+        box-shadow: var(--shadow);
+
+        flex-shrink: 0;
+      }
+
+      .offer:nth-child(1) {
+        background: linear-gradient(135deg, #ff6b00, #ff9a3c);
+      }
+
+      .offer:nth-child(2) {
+        background: linear-gradient(135deg, #00c896, #00e8a7);
+      }
+
+      .offer:nth-child(3) {
+        background: linear-gradient(135deg, #111, #444);
+      }
+
+      .offer h3 {
+        margin-bottom: 8px;
+
+        font-size: 1.3rem;
+      }
+
+      .offer p {
+        color: #fff;
+
+        opacity: 0.9;
+      }
+
+      /* ======================
+     MOBILE RESPONSIVE
+====================== */
+
+      @media (max-width: 768px) {
+        section {
+          padding: 65px 0;
+        }
+
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-image {
+          order: -1;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+        }
+
+        .btn {
+          justify-content: center;
+        }
+
+        .food-card {
+          left: 10px;
+
+          bottom: 10px;
+        }
+
+        nav {
+          height: 72px;
+        }
+
+        .logo {
+          font-size: 1.2rem;
+        }
+
+        .nav-btn {
+          padding: 10px 16px;
+
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =====================
+        NAVBAR
+====================== -->
+
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">Patil's <span>Vada Pav</span></div>
+
+          <a href="https://wa.me/91XXXXXXXXXX" class="nav-btn"> Order Now </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ======================
+        HERO SECTION
+====================== -->
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <div class="tag">🔥 Belapur's Most Loved Street Snack</div>
+
+            <h1>Mumbai's Favourite Vada Pav, Now Just One Click Away.</h1>
+
+            <p>
+              Hot, crispy vada pav made with traditional spices, fresh
+              ingredients and served with authentic Mumbai street-food taste
+              every single day.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="https://wa.me/91XXXXXXXXXX" class="btn primary">
+                📱 Order On WhatsApp
+              </a>
+
+              <a href="#menu" class="btn secondary"> Explore Menu </a>
+            </div>
+          </div>
+
+          <div class="hero-image">
+            <img
+              src="https://images.unsplash.com/photo-1601050690597-df0568f70950"
+              alt="Delicious Vada Pav"
+            />
+
+            <div class="food-card">
+              <h3>⭐ 4.9 Rating</h3>
+
+              <span> 10,000+ Happy Customers </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================
+        OFFERS
+====================== -->
+
+    <section class="offers">
+      <div class="container">
+        <div class="offer-slider">
+          <div class="offer">
+            <h3>🎉 First Order Offer</h3>
+
+            <p>Get 25% OFF on your first WhatsApp order.</p>
+          </div>
+
+          <div class="offer">
+            <h3>🧀 Cheese Festival</h3>
+
+            <p>Double Cheese Vada Pav available at a special price.</p>
+          </div>
+
+          <div class="offer">
+            <h3>⚡ Quick Delivery</h3>
+
+            <p>Freshly prepared and ready within 10 minutes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+
+<!-- ======================
+        MENU SECTION
+====================== -->
+
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="section-title">
+      <span class="small-tag"> 🍽️ Our Special Menu </span>
+
+      <h2>Freshly Made. Packed With Mumbai Flavour.</h2>
+
+      <p>
+        From classic vada pav to cheesy delights, every bite is prepared with
+        fresh ingredients and traditional recipes.
+      </p>
+    </div>
+
+    <div class="menu-grid">
+      <!-- Item 1 -->
+
+      <div class="menu-card">
+        <img
+          src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841"
+          alt="Classic Vada Pav"
+        />
+
+        <div class="menu-content">
+          <h3>Classic Vada Pav</h3>
+
+          <p>The original Mumbai favourite with spicy chutney and soft pav.</p>
+
+          <div class="price-row">
+            <span class="price"> ₹25 </span>
+
+            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+
+      <div class="menu-card">
+        <img
+          src="https://images.unsplash.com/photo-1550547660-d9450f859349"
+          alt="Cheese Vada Pav"
+        />
+
+        <div class="menu-content">
+          <h3>Cheese Burst Vada Pav</h3>
+
+          <p>Loaded with creamy cheese and extra spicy Mumbai masala.</p>
+
+          <div class="price-row">
+            <span class="price"> ₹55 </span>
+
+            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+
+      <div class="menu-card">
+        <img
+          src="https://images.unsplash.com/photo-1585238342024-78d387f4a707"
+          alt="Misal Pav"
+        />
+
+        <div class="menu-content">
+          <h3>Special Misal Pav</h3>
+
+          <p>Traditional Maharashtrian misal with crunchy farsan and pav.</p>
+
+          <div class="price-row">
+            <span class="price"> ₹60 </span>
+
+            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+
+      <div class="menu-card">
+        <img
+          src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd"
+          alt="Burger"
+        />
+
+        <div class="menu-content">
+          <h3>Masala Burger</h3>
+
+          <p>A spicy Indian-style burger with crispy patty and sauces.</p>
+
+          <div class="price-row">
+            <span class="price"> ₹80 </span>
+
+            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+
+      <div class="menu-card">
+        <img
+          src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1"
+          alt="French Fries"
+        />
+
+        <div class="menu-content">
+          <h3>Peri Peri Fries</h3>
+
+          <p>Crispy golden fries tossed with spicy peri peri seasoning.</p>
+
+          <div class="price-row">
+            <span class="price"> ₹70 </span>
+
+            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+
+      <div class="menu-card">
+        <img
+          src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c"
+          alt="Fresh Juice"
+        />
+
+        <div class="menu-content">
+          <h3>Fresh Lime Juice</h3>
+
+          <p>
+            Refreshing fresh lime drink prepared instantly with natural
+            ingredients.
+          </p>
+
+          <div class="price-row">
+            <span class="price"> ₹40 </span>
+
+            <a href="https://wa.me/91XXXXXXXXXX" class="add-btn"> + Add </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================
+       WHY CHOOSE US
+  ====================== -->
+
+<section class="features">
+  <div class="container">
+    <div class="section-title">
+      <span class="small-tag"> ✨ Why Customers Love Us </span>
+
+      <h2>Street Food Taste. Premium Quality.</h2>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">🥔</div>
+
+        <h3>Fresh Daily</h3>
+
+        <p>
+          Our ingredients are sourced fresh every morning to maintain authentic
+          taste.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">🧼</div>
+
+        <h3>Hygienic Kitchen</h3>
+
+        <p>
+          Prepared with proper hygiene and clean cooking practices for your
+          safety.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">⚡</div>
+
+        <h3>Ready in 10 Minutes</h3>
+
+        <p>Quick preparation without compromising the quality and flavour.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================
+         SCAN & ORDER
+  ====================== -->
+
+<section class="scan">
+  <div class="container">
+    <div class="scan-card">
+      <div>
+        <h2>Scan To Order From Our Stall</h2>
+
+        <p>
+          Skip the queue. Scan the QR code and place your WhatsApp order
+          instantly.
+        </p>
+
+        <a href="https://wa.me/91XXXXXXXXXX" class="btn primary">
+          Order On WhatsApp
+        </a>
+      </div>
+
+      <div class="qr-box">
+        QR CODE
+
+        <br /><br />
+
+        Place your QR image here
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================
+       LOCATION & TIMING
+  ====================== -->
+
+<section class="location">
+  <div class="container">
+    <div class="location-grid">
+      <div class="location-info">
+        <h2>Visit Our Stall</h2>
+
+        <h3>📍 Location</h3>
+
+        <p>Near CBD Belapur Railway Station, Navi Mumbai</p>
+
+        <h3>🕒 Opening Hours</h3>
+
+        <p>
+          Monday - Sunday<br />
+          8:00 AM - 10:30 PM
+        </p>
+      </div>
+
+      <div class="map-box">
+        Google Maps<br /><br />
+
+        Embed map iframe here
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+
+  /* ======================
+      COMMON SECTION TITLE
+  ====================== */
+  
+  .section-title{
+  text-align:center;
+  max-width:700px;
+  margin:0 auto 50px;
+  }
+  
+  
+  .small-tag{
+  
+  display:inline-block;
+  
+  background:rgba(255,107,0,.12);
+  
+  color:var(--orange);
+  
+  padding:10px 18px;
+  
+  border-radius:50px;
+  
+  font-weight:600;
+  
+  margin-bottom:15px;
+  
+  }
+  
+  
+  /* ======================
+          MENU
+  ====================== */
+  
+  
+  .menu-grid{
+  
+  display:grid;
+  
+  grid-template-columns:
+  repeat(3,1fr);
+  
+  gap:25px;
+  
+  }
+  
+  
+  .menu-card{
+  
+  background:white;
+  
+  border-radius:28px;
+  
+  overflow:hidden;
+  
+  box-shadow:
+  var(--shadow);
+  
+  transition:.35s;
+  
+  }
+  
+  
+  .menu-card:hover{
+  
+  transform:
+  translateY(-10px);
+  
+  box-shadow:
+  0 20px 45px rgba(0,0,0,.18);
+  
+  }
+  
+  
+  .menu-card img{
+  
+  width:100%;
+  
+  height:220px;
+  
+  object-fit:cover;
+  
+  }
+  
+  
+  .menu-content{
+  
+  padding:22px;
+  
+  }
+  
+  
+  .menu-content h3{
+  
+  margin-bottom:10px;
+  
+  }
+  
+  
+  .price-row{
+  
+  margin-top:20px;
+  
+  display:flex;
+  
+  justify-content:space-between;
+  
+  align-items:center;
+  
+  }
+  
+  
+  .price{
+  
+  font-size:1.3rem;
+  
+  font-weight:800;
+  
+  color:var(--orange);
+  
+  }
+  
+  
+  .add-btn{
+  
+  text-decoration:none;
+  
+  background:var(--dark);
+  
+  color:white;
+  
+  padding:10px 18px;
+  
+  border-radius:50px;
+  
+  font-weight:600;
+  
+  transition:.3s;
+  
+  }
+  
+  
+  .add-btn:hover{
+  
+  background:var(--orange);
+  
+  }
+  
+  
+  /* ======================
+          FEATURES
+  ====================== */
+  
+  
+  .feature-grid{
+  
+  display:grid;
+  
+  grid-template-columns:
+  repeat(3,1fr);
+  
+  gap:25px;
+  
+  }
+  
+  
+  .feature-card{
+  
+  background:white;
+  
+  padding:35px;
+  
+  text-align:center;
+  
+  border-radius:var(--radius);
+  
+  box-shadow:var(--shadow);
+  
+  transition:.3s;
+  
+  }
+  
+  
+  .feature-card:hover{
+  
+  transform:translateY(-8px);
+  
+  }
+  
+  
+  .icon{
+  
+  font-size:2.8rem;
+  
+  margin-bottom:15px;
+  
+  }
+  
+  
+  /* ======================
+        QR SECTION
+  ====================== */
+  
+  
+  .scan-card{
+  
+  background:
+  linear-gradient(135deg,#181818,#333);
+  
+  color:white;
+  
+  border-radius:35px;
+  
+  padding:50px;
+  
+  display:flex;
+  
+  justify-content:space-between;
+  
+  align-items:center;
+  
+  gap:30px;
+  
+  overflow:hidden;
+  
+  }
+  
+  
+  .scan-card p{
+  
+  color:#ddd;
+  
+  margin:15px 0 25px;
+  
+  }
+  
+  
+  .qr-box{
+  
+  min-width:200px;
+  height:200px;
+  
+  background:white;
+  
+  color:black;
+  
+  display:flex;
+  
+  align-items:center;
+  
+  justify-content:center;
+  
+  text-align:center;
+  
+  border-radius:25px;
+  
+  font-weight:700;
+  
+  }
+  
+  
+  /* ======================
+        LOCATION
+  ====================== */
+  
+  
+  .location-grid{
+  
+  display:grid;
+  
+  grid-template-columns:
+  1fr 1fr;
+  
+  gap:30px;
+  
+  }
+  
+  
+  .location-info{
+  
+  background:white;
+  
+  padding:35px;
+  
+  border-radius:var(--radius);
+  
+  box-shadow:var(--shadow);
+  
+  }
+  
+  
+  .location-info h3{
+  
+  margin-top:25px;
+  
+  }
+  
+  
+  .map-box{
+  
+  background:#ddd;
+  
+  min-height:350px;
+  
+  border-radius:var(--radius);
+  
+  display:flex;
+  
+  align-items:center;
+  
+  justify-content:center;
+  
+  font-size:1.2rem;
+  
+  font-weight:700;
+  
+  }
+  
+  
+  /* ======================
+        FOOTER
+  ====================== */
+  
+  
+  footer{
+  
+  background:#101010;
+  
+  color:white;
+  
+  padding:70px 0 30px;
+  
+  }
+  
+  
+  .footer-grid{
+  
+  display:grid;
+  
+  grid-template-columns:
+  2fr 1fr 1fr;
+  
+  gap:35px;
+  
+  }
+  
+  
+  .footer-logo{
+  
+  font-size:1.7rem;
+  
+  font-family:'Outfit';
+  
+  font-weight:800;
+  
+  }
+  
+  
+  .footer-logo span{
+  
+  color:var(--orange);
+  
+  }
+  
+  
+  .footer-text{
+  
+  color:#aaa;
+  
+  margin-top:15px;
+  
+  }
+  
+  
+  .footer-links a{
+  
+  display:block;
+  
+  color:#ddd;
+  
+  text-decoration:none;
+  
+  margin-bottom:12px;
+  
+  transition:.3s;
+  
+  }
+  
+  
+  .footer-links a:hover{
+  
+  color:var(--orange);
+  
+  }
+  
+  
+  .social{
+  
+  display:flex;
+  
+  gap:12px;
+  
+  margin-top:15px;
+  
+  }
+  
+  
+  .social a{
+  
+  width:45px;
+  height:45px;
+  
+  background:#222;
+  
+  border-radius:50%;
+  
+  display:flex;
+  
+  align-items:center;
+  
+  justify-content:center;
+  
+  color:white;
+  
+  text-decoration:none;
+  
+  font-size:1.2rem;
+  
+  }
+  
+  
+  .footer-bottom{
+  
+  margin-top:40px;
+  
+  padding-top:25px;
+  
+  border-top:1px solid #333;
+  
+  text-align:center;
+  
+  color:#888;
+  
+  }
+  
+  
+  /* ======================
+        FLOATING WHATSAPP
+  ====================== */
+  
+  
+  .whatsapp-float{
+  
+  position:fixed;
+  
+  right:20px;
+  
+  bottom:20px;
+  
+  width:65px;
+  
+  height:65px;
+  
+  border-radius:50%;
+  
+  background:#25D366;
+  
+  display:flex;
+  
+  align-items:center;
+  
+  justify-content:center;
+  
+  font-size:32px;
+  
+  text-decoration:none;
+  
+  box-shadow:
+  0 10px 25px rgba(37,211,102,.5);
+  
+  z-index:999;
+  
+  animation:
+  pulse 2s infinite;
+  
+  }
+  
+  
+  @keyframes pulse{
+  
+  0%{
+  transform:scale(1);
+  }
+  
+  50%{
+  transform:scale(1.1);
+  }
+  
+  100%{
+  transform:scale(1);
+  }
+  
+  }
+  
+  
+  /* ======================
+         MOBILE DESIGN
+  ====================== */
+  
+  
+  @media(max-width:768px){
+  
+  
+  .menu-grid,
+  .feature-grid,
+  .location-grid,
+  .footer-grid{
+  
+  grid-template-columns:1fr;
+  
+  }
+  
+  
+  .scan-card{
+  
+  flex-direction:column;
+  
+  text-align:center;
+  
+  padding:35px 25px;
+  
+  }
+  
+  
+  .qr-box{
+  
+  width:180px;
+  
+  height:180px;
+  
+  }
+  
+  
+  }
+  
+  </style>
+  
+  
+  
+  <!-- ======================
+          FOOTER
+  ====================== -->
+  
+  
+  <footer>
+  
+  <div class="container">
+  
+  
+  <div class="footer-grid">
+  
+  
+  <div>
+  
+  <div class="footer-logo">
+  
+  Patil's <span>Vada Pav</span>
+  
+  </div>
+  
+  
+  <p class="footer-text">
+  
+  Authentic Mumbai street food served fresh every day with love, hygiene and unforgettable taste.
+  
+  </p>
+  
+  
+  <div class="social">
+  
+  <a href="#">
+  📸
+  </a>
+  
+  
+  <a href="#">
+  📱
+  </a>
+  
+  
+  </div>
+  
+  
+  </div>
+  
+  
+  
+  <div class="footer-links">
+  
+  
+  <h3>
+  Quick Links
+  </h3>
+  
+  
+  <br>
+  
+  
+  <a href="#">
+  Home
+  </a>
+  
+  
+  <a href="#menu">
+  Menu
+  </a>
+  
+  
+  <a href="#">
+  Location
+  </a>
+  
+  
+  </div>
+  
+  
+  
+  <div class="footer-links">
+  
+  
+  <h3>
+  Contact
+  </h3>
+  
+  
+  <br>
+  
+  
+  <a href="https://wa.me/91XXXXXXXXXX">
+  
+  WhatsApp Order
+  
+  </a>
+  
+  
+  <p style="color:#aaa">
+  
+  FSSAI LIC No:
+  XXXXXXXXXXXX
+  
+  </p>
+  
+  
+  </div>
+  
+  
+  
+  </div>
+  
+  
+  <div class="footer-bottom">
+  
+  © 2026 Patil's Vada Pav | Designed with ❤️ for Mumbai Food Lovers
+  
+  </div>
+  
+  
+  </div>
+  
+  
+  </footer>
+  
+  
+  
+  <!-- Floating WhatsApp -->
+  
+  
+  <a 
+  href="https://wa.me/91XXXXXXXXXX"
+  class="whatsapp-float">
+  
+  💬
+  
+  </a>
+  
+  
+  </body>
+  
+  </html>
